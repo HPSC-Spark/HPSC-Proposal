@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{cite}
 
 \title{High-Performance Data Analysis on Janus using Apache Spark}
 \author{Nick Vanderweit \\
@@ -14,8 +15,50 @@ We propose a method for \ldots
 \end{abstract}
 
 \section*{Introduction}
-Put background information in subsections here
+Put background information in subsections here \cite{fenn-dtk2006b}
+
+\subsection*{MapReduce}
+
+% general outline ideas:
+- what is map-reduce, history, applications (1 Ref Paper) \\
+- janus description, why janus can't use hadoop (1 Ref Paper) \\
+- what is spark, differs from hadoop \\
+
+\subsection*{Profiling MapReduce}
+
+% general outline ideas:
+- existing profiling metric, tools, results (1-2 Ref Paper) \\
+- spark specific tools, results, or lack there of \\
+- goal of project \\
+
+\section*{Proposal}
+
+\subsection*{Setup/Profiling}
+
+% general outline ideas:
+- profile performance of spark on janus \\
+- find/address weak points/janus-specific problems \\
+- too big for memory (benchmarking on this specfic problem) \\
+- how does data shuffling work \\
+- network congestion \\
+
+\subsection*{Implementing Project X}
+
+% general outline ideas:
+- employ spark on a project (1 Ref Paper) \\
+- profile program and improve performance \\
+- possible ideas
+\begin{enumerate}
+    \item Ray-tracing
+    \item NLP of Twitter Data
+\end{enumerate}
+
 
 \section*{Analysis}
+
 \section*{Future Directions}
+
+\bibliography{paper}
+\bibliographystyle{plain}
+
 \end{document}
