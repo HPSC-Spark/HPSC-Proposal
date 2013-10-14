@@ -1,6 +1,13 @@
 \documentclass{article}
 \usepackage{cite}
 
+%%%
+%
+% I wrote outline in the comments below to helpfully guide us
+% but obviously feel free to modify/stray from it as you see fit
+%
+%%%
+
 \title{High-Performance Data Analysis on Janus using Apache Spark}
 \author{Nick Vanderweit \\
         Ning Gao \\
@@ -17,46 +24,81 @@ We propose a method for \ldots
 \section*{Introduction}
 Put background information in subsections here \cite{fenn-dtk2006b}
 
-\subsection*{MapReduce}
+% what is map-reduce, history, applications (1 Ref Paper) 
+%   - origin, date, creators, original purpose
+%   - growing popularity, expanding applications
+%   - common technologies/tools, Hadoop
+% Janus description, why Janus can't use hadoop (1 Ref Paper) 
+%   - what, where is it
+%   - architecture, hardware: number of nodes, procs, storage
+%   - focus on diskless, common for HPC?
+%   - has not yet employed MR technologies
+%   - problem with Hadoop and diskless
+% what is spark, differs from hadoop 
+%   - spark another MR solution, but all in-memory, year created
+%   - solves the diskless problem, can run on janus
+%   - other contrasts with hadoop, prefered domains
+%         - iterative, interactive, beyond MapReduce
 
-% general outline ideas:
-- what is map-reduce, history, applications (1 Ref Paper) \\
-- janus description, why janus can't use hadoop (1 Ref Paper) \\
-- what is spark, differs from hadoop \\
-
-\subsection*{Profiling MapReduce}
-
-% general outline ideas:
-- existing profiling metric, tools, results (1-2 Ref Paper) \\
-- spark specific tools, results, or lack there of \\
-- goal of project \\
+\section*{Existing Performance Evaluations }
+% existing profiling metric, tools, results (1-2 Ref Paper) 
+%   - fairly new technology, not as well studied/supported
+%   - some studies have been made (MR/Haddop in general):
+%         - detail studies 1: what, how, findings
+%         - detail studies 2: what, how, findings
+%         - detail studies 3: what, how, findings
+% spark specific tools, results, or lack there of 
+%   - few studies, new technology
+%         - detail studies 1: what, how, findings
+%         - detail studies 2: what, how, findings
 
 \section*{Proposal}
+% room for further research
+%   - whate are questions we can still try to answer
+%   - how does Janus make this a special case
 
 \subsection*{Setup/Profiling}
 
-% general outline ideas:
-- profile performance of spark on janus \\
-- find/address weak points/janus-specific problems \\
-- too big for memory (benchmarking on this specfic problem) \\
-- how does data shuffling work \\
-- network congestion \\
+% profile performance of spark on Janus 
+% find/address weak points/Janus-specific problems 
+% possible areas to focus on during evaluation:
+%   - too big for memory (benchmarking on this specific problem) 
+%   - data shuffling work 
+%   - network congestion 
+%   - iterations
+%   - load balancing
 
 \subsection*{Implementing Project X}
 
-% general outline ideas:
-- employ spark on a project (1 Ref Paper) \\
-- profile program and improve performance \\
-- possible ideas
-\begin{enumerate}
-    \item Ray-tracing
-    \item NLP of Twitter Data
-\end{enumerate}
+% time-permitting, employ spark on a project
+% brief intro to topic/problem (1-2 Ref Paper) 
+% how does it lend itself to MapReduce (Spark) approach
+% overview of design/implementation
+% profile program and improve performance 
+% using insight gained from phase one profiling
+% model for future MR applications on Janus
 
+%%% current ideas (input still needed):
+%%% - Ray-tracing
+%%% - NLP of Twitter (or similar) Data
+%%% - Neural Networks
 
-\section*{Analysis}
+\section*{Process/Schedule}
+% monte is our sponsor/advisor
+% expected timeline/milestone dates
+%   - install, play, understand
+%   - device test problems, collect data
+%   - find-setup / develop metrics
+%   - run test and varying problems sets
+%   - analyze results
+% reiterate "project implementation" will be approach if time allows
+%   - general milestones
 
-\section*{Future Directions}
+\section*{Conclusion}
+
+% sum up MR's importance
+% restate project goals
+% add info to relatively new field
 
 \bibliography{paper}
 \bibliographystyle{plain}
