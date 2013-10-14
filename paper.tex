@@ -39,6 +39,8 @@ Put background information in subsections here \cite{fenn-dtk2006b}
 %   - solves the diskless problem, can run on janus
 %   - other contrasts with hadoop, prefered domains
 %         - iterative, interactive, beyond MapReduce
+%   - what is shark (do we want to use Shark in our project?)
+%       - shark comes with its own set of benchmark queries
 
 \section*{Existing Performance Evaluations }
 % existing profiling metric, tools, results (1-2 Ref Paper) 
@@ -50,16 +52,24 @@ Put background information in subsections here \cite{fenn-dtk2006b}
 % spark specific tools, results, or lack there of 
 %   - few studies, new technology
 %         - detail studies 1: what, how, findings
+%               "Perofrmance and Scalability of Broadcast in Spark"
+%               determined broadcast limited scalability
+%               compares performance of Spark vs Hadoop on Logistic Reg prob
+%               times during first and second iterations
+%               ratio: computation vs broadcast times during an iteration
 %         - detail studies 2: what, how, findings
 
 \section*{Proposal}
 % room for further research
 %   - whate are questions we can still try to answer
 %   - how does Janus make this a special case
+%       - make very Janus specific
 
 \subsection*{Setup/Profiling}
 
 % profile performance of spark on Janus 
+% existing technologies for MR
+% possibility of adapting these benchmarks to run on janus
 % find/address weak points/Janus-specific problems 
 % possible areas to focus on during evaluation:
 %   - too big for memory (benchmarking on this specific problem) 
@@ -67,6 +77,8 @@ Put background information in subsections here \cite{fenn-dtk2006b}
 %   - network congestion 
 %   - iterations
 %   - load balancing
+% create models that can be used both others in the future
+%   - guide for what hardward requirements are needed for given problems
 
 \subsection*{Implementing Project X}
 
