@@ -38,13 +38,13 @@ Reduce tasks are responsible for distilling a set of values associated with
 a key to a smaller set, often containing just one value.
 
 Despite its popularity, the MapReduce architecture has some significant
-limitations. For one, Reduce tasks can only be assigned after all Map tasks
-have been completed, meaning that nodes will idle even when there is work
-remaining. Another major performance limitation, which will be central to the
-motivation behind this project, is the architecture's reliance on a distributed
-filesystem. This limits the performance of iterative computations because every
-Map or Reduce task needs to read its input from storage and write its output
-back.
+limitations\citep{lee-survey}. For one, Reduce tasks can only be assigned after
+all Map tasks have been completed, meaning that nodes will idle even when there
+is work remaining. Another major performance limitation, which will be central
+to the motivation behind this project, is the architecture's reliance on a
+distributed filesystem. This limits the performance of iterative computations
+because every Map or Reduce task needs to read its input from storage and write
+its output back.
 % what is map-reduce, history, applications (1 Ref Paper) 
 %   - origin, date, creators, original purpose
 %   - growing popularity, expanding applications
