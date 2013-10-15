@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{cite}
+\usepackage{natbib}
 
 %%%
 %
@@ -18,12 +18,20 @@
 \maketitle
 
 \begin{abstract}
-We propose a method for \ldots
 \end{abstract}
 
 \section*{Introduction}
-Put background information in subsections here \cite{fenn-dtk2006b}
+MapReduce\citep{dean-mapreduce} is a programming paradigm for performing highly
+parallel tasks on large sets of data. Designed at Google to provide an
+abstraction for interacting with raw data at scale, MapReduce is based on
+a master/slave model, where the workers are assigned tasks as they become idle.
 
+MapReduce is named after the two kinds of tasks that workers can be assigned.
+A \emph{Map} is a user-defined function of type
+$(k_1 \times v_1) \rightarrow list \: (k_2 \times v_2)$.
+That is, it takes a key-value pair and produces a list of
+intermediate key-value pairs. \emph{Reduce} has type
+$(k_1 \times list \: v_1) \rightarrow list \: v_2$.
 % what is map-reduce, history, applications (1 Ref Paper) 
 %   - origin, date, creators, original purpose
 %   - growing popularity, expanding applications
