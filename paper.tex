@@ -31,7 +31,20 @@ A \emph{Map} is a user-defined function of type
 $(k_1 \times v_1) \rightarrow list \: (k_2 \times v_2)$.
 That is, it takes a key-value pair and produces a list of
 intermediate key-value pairs. \emph{Reduce} has type
-$(k_1 \times list \: v_1) \rightarrow list \: v_2$.
+$(k_1 \times list \: v_1) \rightarrow list \: v_2$.\footnote{
+These tasks are inspired by the \emph{map} and \emph{fold}
+higher-order functions from functional programming.}
+Reduce tasks are responsible for distilling a set of values associated with
+a key to a smaller set, often containing just one value.
+
+Despite its popularity, the MapReduce architecture has some significant
+limitations. For one, Reduce tasks can only be assigned after all Map tasks
+have been completed, meaning that nodes will idle even when there is work
+remaining. Another major performance limitation, which will be central to the
+motivation behind this project, is the architecture's reliance on a distributed
+filesystem. This limits the performance of iterative computations because every
+Map or Reduce task needs to read its input from storage and write its output
+back.
 % what is map-reduce, history, applications (1 Ref Paper) 
 %   - origin, date, creators, original purpose
 %   - growing popularity, expanding applications
