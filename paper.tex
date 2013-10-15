@@ -48,12 +48,18 @@ its output back.
 
 \subsection*{Apache Spark}
 Apache Spark\citep{zaharia} is designed to remove this bottleneck in order to
-increase the performance of iterative computations. The storage model of Spark
-is based around \emph{Resilient Distributed Datasets}, or RDDs.
+increase the performance of iterative computations. Spark was introduced by
+AMPLab at University of California Berkeley. Its storage model Spark is
+based around \emph{Resilient Distributed Datasets}, or
+RDDs.\citep{zaharia_rdd}
 
 An RDD is processed in parallel by being split into \emph{partitions}, which
 are split between nodes. The dataset is accessed through a handle, which
 represents the RDD as a \emph{lineage} of transformations on persistent data.
+This allows RDDs to be recovered in the event of node failure, without writing
+all intermediate data to distributed storage. Spark is written in Scala,
+a statically-typed functional JVM language, and allows interaction with datasets
+using the Scala collections API.
 
 % what is map-reduce, history, applications (1 Ref Paper) 
 %   - origin, date, creators, original purpose
@@ -67,7 +73,7 @@ represents the RDD as a \emph{lineage} of transformations on persistent data.
 %   - problem with Hadoop and disk-less
 
 % what is spark, differs from hadoop 
-Spark\citep{zaharia_rdd}, known for its peformance in iterative and interactive tasks, was introduced by AmpLab group in University of California Berkeley. One of the best features that Spark supports is fault-tolerance. With hundreds or even thousands of machines in one cluster, the failure rate for one computer is not negligible. Spark is able to recover from failed machines by rebuilding the lost data from the lineage information of the RDD. On the other hand, Spark is so expressible that it not only supports mapreduce model and also Pregel, DryadLINQ, which means the program you run on mapreduce can be modified to work on Spark.
+%Spark\citep{zaharia_rdd}, known for its peformance in iterative and interactive tasks, was introduced by AmpLab group in University of California Berkeley. One of the best features that Spark supports is fault-tolerance. With hundreds or even thousands of machines in one cluster, the failure rate for one computer is not negligible. Spark is able to recover from failed machines by rebuilding the lost data from the lineage information of the RDD. On the other hand, Spark is so expressible that it not only supports mapreduce model and also Pregel, DryadLINQ, which means the program you run on mapreduce can be modified to work on Spark.
 % Spark\citep{zaharia} \citep{zaharia_rdd}
 %   - spark another MR solution, but all in-memory, year created
 %   - solves the disk-less problem, can run on Janus
