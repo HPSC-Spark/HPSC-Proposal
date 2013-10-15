@@ -55,8 +55,10 @@ its output back.
 %   - focus on disk-less, common for HPC?
 %   - has not yet employed MR technologies
 %   - problem with Hadoop and disk-less
+
 % what is spark, differs from hadoop 
-% Spark\citep{zaharia}
+Spark\citep{zaharia_rdd}, known for its peformance in iterative and interactive tasks, was introduced by AmpLab group in University of California Berkeley. One of the best features that Spark supports is fault-tolerance. With hundreds or even thousands of machines in one cluster, the failure rate for one computer is not negligible. Spark is able to recover from failed machines by rebuilding the lost data from the lineage information of the RDD. On the other hand, Spark is so expressible that it not only supports mapreduce model and also Pregel, DryadLINQ, which means the program you run on mapreduce can be modified to work on Spark.
+% Spark\citep{zaharia} \citep{zaharia_rdd}
 %   - spark another MR solution, but all in-memory, year created
 %   - solves the disk-less problem, can run on Janus
 %   - other contrasts with hadoop, preferred domains
@@ -75,11 +77,13 @@ benchmarking other MapReduce technologies and gives us a initial point in which
 to start our evaluation of Spark on Janus.
 
 %% Assuming Hadoop reference above
-Hadoop, being is one of the more popular MapReduce frameworks, has been in a
+Hadoop, being one of the more popular MapReduce frameworks, has been in a
 number of different studies. For this reason (and its large constrast in how
 it utilizes memory and disk storage), Hadoop will make for an interesting
 comparision with Spark.
 
+% existing spark evaluation
+Most of the benchmark programs run on Spark system were iterative and interactive tasks. For example, RDD\citep{zaharia_rdd} used iterative machine learning algorithms such as K-means, logistic regression, PageRank with public data from wikipedia dump and interactive SQL queries, which showed that Spark with its in-memory data technology, outperformed hadoop system by 10 to 20 times. Andrew Pavlo et al. \cite{andrew} compared SQL performance between mapreduce and DBMS system and Amplab \citep{amplab_bench}, inspired by the benchmark in the previous paper and then conducted benchmarks on Shark, Hive\citep{ashish}, Impala and Redshift.
 % performance of mapreduce: an in-depth study
 % written in Java
 % Hadoop\citep{jiang}
@@ -115,11 +119,12 @@ comparision with Spark.
 % find/address weak points/Janus-specific problems 
 % possible areas to focus on during evaluation:
 %   - too big for memory (benchmarking on this specific problem) 
-%   - data shuffling work 
+%   - data shuffling work \citep{jiaxing}
 %   - network congestion 
 %   - iterative, interactive analysis
 %   - load balancing
 %   - fault tolerance
+%	- data skew \citep{qifa} \citep{ganesh}
 % create models that can be used both others in the future
 %   - guide for what hardware requirements are needed for given problems
 
