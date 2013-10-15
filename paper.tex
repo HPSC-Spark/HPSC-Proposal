@@ -39,54 +39,76 @@ $(k_1 \times list \: v_1) \rightarrow list \: v_2$.
 % Janus description, why Janus can't use hadoop (1 Ref Paper) 
 %   - what, where is it
 %   - architecture, hardware: number of nodes, procs, storage
-%   - focus on diskless, common for HPC?
+%   - focus on disk-less, common for HPC?
 %   - has not yet employed MR technologies
-%   - problem with Hadoop and diskless
+%   - problem with Hadoop and disk-less
 % what is spark, differs from hadoop 
+% Spark\citep{zaharia}
 %   - spark another MR solution, but all in-memory, year created
-%   - solves the diskless problem, can run on janus
-%   - other contrasts with hadoop, prefered domains
+%   - solves the disk-less problem, can run on Janus
+%   - other contrasts with hadoop, preferred domains
 %         - iterative, interactive, beyond MapReduce
 %   - what is shark (do we want to use Shark in our project?)
 %       - shark comes with its own set of benchmark queries
 
 \section*{Existing Performance Evaluations }
-% existing profiling metric, tools, results (1-2 Ref Paper) 
-%   - fairly new technology, not as well studied/supported
-%   - some studies have been made (MR/Haddop in general):
-%         - detail studies 1: what, how, findings
-%         - detail studies 2: what, how, findings
-%         - detail studies 3: what, how, findings
+Despite being a relatively new technology, a considerable amount of performance
+evaluations has been performed on the wide array of MapReduce solutions.
+In Google's first paper introduction MapReduce, they provided a number of
+example tasks in which MapReduce can be applied. A few of those listed were
+word count, distributed grep, counting URL access frequency, \& reverse web-link
+graph\citep{dean-mapreduce}. These examples have often been implemented for
+benchmarking other MapReduce technologies and gives us a initial point in which
+to start our evaluation of Spark on Janus.
+
+%% Assuming Hadoop reference above
+Hadoop, being is one of the more popular MapReduce frameworks, has been in a
+number of different studies. For this reason (and its large constrast in how
+it utilizes memory and disk storage), Hadoop will make for an interesting
+comparision with Spark.
+
+% performance of mapreduce: an in-depth study
+% written in Java
+% Hadoop\citep{jiang}
+
 % spark specific tools, results, or lack there of 
-%   - few studies, new technology
+%   - even few studies, new technology far newer
 %         - detail studies 1: what, how, findings
-%               "Perofrmance and Scalability of Broadcast in Spark"
+%               "Performance and Scalability of Broadcast in Spark"
 %               determined broadcast limited scalability
 %               compares performance of Spark vs Hadoop on Logistic Reg prob
 %               times during first and second iterations
 %               ratio: computation vs broadcast times during an iteration
-%         - detail studies 2: what, how, findings
+% Broadcast\citep{chowdhury}
+
+% introduction to shark
+%   SQL interface for spark
+%   abstracts coding mapreduce functions
+%   - shark study results
+% Shark\citep{engle}
 
 \section*{Proposal}
 % room for further research
-%   - whate are questions we can still try to answer
+%   - what are questions we can still try to answer
 %   - how does Janus make this a special case
 %       - make very Janus specific
 
 \subsection*{Setup/Profiling}
+% do same grep test as google & hadoop
 
 % profile performance of spark on Janus 
 % existing technologies for MR
-% possibility of adapting these benchmarks to run on janus
+% possibility of adapting these benchmarks to run on Janus
 % find/address weak points/Janus-specific problems 
 % possible areas to focus on during evaluation:
 %   - too big for memory (benchmarking on this specific problem) 
 %   - data shuffling work 
 %   - network congestion 
-%   - iterations
+%   - iterative, interactive analysis
 %   - load balancing
+%   - fault tolerance
 % create models that can be used both others in the future
-%   - guide for what hardward requirements are needed for given problems
+%   - guide for what hardware requirements are needed for given problems
 
 \subsection*{Implementing Project X}
 
@@ -104,8 +126,8 @@ $(k_1 \times list \: v_1) \rightarrow list \: v_2$.
 %%% - Neural Networks
 
 \section*{Process/Schedule}
-% monte is our sponsor/advisor
-% expected timeline/milestone dates
+% Monte is our sponsor/advisor
+% expected time-line/milestone dates
 %   - install, play, understand
 %   - device test problems, collect data
 %   - find-setup / develop metrics
@@ -117,7 +139,10 @@ $(k_1 \times list \: v_1) \rightarrow list \: v_2$.
 \section*{Conclusion}
 
 % sum up MR's importance
+% setup on Janus, test, evaluate
+% path for research to be conducted in future
 % restate project goals
+% specific conditions of Janus
 % add info to relatively new field
 
 \bibliography{paper}
