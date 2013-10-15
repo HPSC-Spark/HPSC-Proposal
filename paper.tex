@@ -45,24 +45,32 @@ motivation behind this project, is the architecture's reliance on a distributed
 filesystem. This limits the performance of iterative computations because every
 Map or Reduce task needs to read its input from storage and write its output
 back.
+
 % what is map-reduce, history, applications (1 Ref Paper) 
 %   - origin, date, creators, original purpose
 %   - growing popularity, expanding applications
 %   - common technologies/tools, Hadoop
-% Janus description, why Janus can't use hadoop (1 Ref Paper) 
+% Janus description, why Janus can't use Hadoop (1 Ref Paper) 
+%       \citep{tufo}
 %   - what, where is it
 %   - architecture, hardware: number of nodes, procs, storage
 %   - focus on disk-less, common for HPC?
 %   - has not yet employed MR technologies
 %   - problem with Hadoop and disk-less
-% what is spark, differs from hadoop 
+% what is spark, differs from Hadoop 
 % Spark\citep{zaharia}
+%   - relationship with Scala (statically typed HL programming language for JVM)
+%       \citep{zaharia}
 %   - spark another MR solution, but all in-memory, year created
 %   - solves the disk-less problem, can run on Janus
-%   - other contrasts with hadoop, preferred domains
+%   - other contrasts with Hadoop, preferred domains
 %         - iterative, interactive, beyond MapReduce
+
 %   - what is shark (do we want to use Shark in our project?)
 %       - shark comes with its own set of benchmark queries
+
+% Provides easy SQL programming interface to Spark's deep analysis tools.
+% Shark\citep{engle}
 
 \section*{Existing Performance Evaluations }
 Despite being a relatively new technology, a considerable amount of performance
@@ -76,23 +84,50 @@ to start our evaluation of Spark on Janus.
 
 %% Assuming Hadoop reference above
 Hadoop, being is one of the more popular MapReduce frameworks, has been in a
-number of different studies. For this reason (and its large constrast in how
+number of different studies. For this reason (and its large contrast in how
 it utilizes memory and disk storage), Hadoop will make for an interesting
-comparision with Spark.
+comparison with Spark.
 
 % performance of mapreduce: an in-depth study
 % written in Java
 % Hadoop\citep{jiang}
 
-% spark specific tools, results, or lack there of 
-%   - even few studies, new technology far newer
-%         - detail studies 1: what, how, findings
+
+As Spark is a newer technologies, it does not have the same quantity of
+performance evaluations as Hadoop. But there still has been a significant
+amount of conducted research on Spark (and the related Shark) that will gives
+some initial insight and its performance that will aid us in our research.
+
+% outperforms Hadoop by 10x in iterative machine learning jobs
+% queries 39GB dataset with sub-second response time
+% \citep{zaharia}
+
+% Resilient Distributed Datasets (RDDs)
+%     read only collection of objects
+%     partitioned across a set of machines
+%     data need not exist in physical storage
+
+% Parallel Operations on these datasets
+% \citep{zaharia}
+
+
 %               "Performance and Scalability of Broadcast in Spark"
 %               determined broadcast limited scalability
 %               compares performance of Spark vs Hadoop on Logistic Reg prob
 %               times during first and second iterations
 %               ratio: computation vs broadcast times during an iteration
 % Broadcast\citep{chowdhury}
+% load into memory, read only happens once, overhead of creating workers reduce
+
+As we will be running Spark with Shark, we will also briefly touch on the
+reported performance of Shark. When compared to Hive (Hadoop's respective
+SQL interface) we see that the run-times for the first iteration are comparable,
+(when data need to be loaded into memory). But Shark is shown to be 10 orders
+of magnitude faster during subsequent iterations of an algorithms\citep{engle}.
+Even if this is not a pure comparison of the Hadoop and Spark technologies, we
+can still glean some additional insights as to where each technology performs
+best.
+
 
 % introduction to shark
 %   SQL interface for spark
@@ -107,7 +142,7 @@ comparision with Spark.
 %       - make very Janus specific
 
 \subsection*{Setup/Profiling}
-% do same grep test as google & hadoop
+% do same grep test as google & Hadoop
 
 % profile performance of spark on Janus 
 % existing technologies for MR
