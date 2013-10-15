@@ -45,6 +45,16 @@ to the motivation behind this project, is the architecture's reliance on a
 distributed filesystem. This limits the performance of iterative computations
 because every Map or Reduce task needs to read its input from storage and write
 its output back.
+
+\subsection*{Apache Spark}
+Apache Spark\citep{zaharia} is designed to remove this bottleneck in order to
+increase the performance of iterative computations. The storage model of Spark
+is based around \emph{Resilient Distributed Datasets}, or RDDs.
+
+An RDD is processed in parallel by being split into \emph{partitions}, which
+are split between nodes. The dataset is accessed through a handle, which
+represents the RDD as a \emph{lineage} of transformations on persistent data.
+
 % what is map-reduce, history, applications (1 Ref Paper) 
 %   - origin, date, creators, original purpose
 %   - growing popularity, expanding applications
