@@ -1,1 +1,2 @@
+"MapReduce: Simplified Data Processing on Large Clusters". Jeffrey Dean and Sanjay Ghemawat
 "Spark: Cluster Computing with Working Sets" by Matei Zaharia et al.

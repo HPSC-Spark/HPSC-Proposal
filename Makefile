@@ -1,3 +1,8 @@
 paper:
 	pdflatex paper.tex
-	pdflatex paper.tex # Second time around to fix references
+	bibtex paper
+	pdflatex paper.tex
+	pdflatex paper.tex
+
+clean:
+	rm -f paper.{aux,bbl,blg,log,pdf} texput.log
