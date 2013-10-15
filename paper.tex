@@ -21,7 +21,7 @@
 \end{abstract}
 
 \section*{Introduction}
-MapReduce\citep{dean-mapreduce} is a programming paradigm for performing highly
+MapReduce \citep{dean-mapreduce} is a programming paradigm for performing highly
 parallel tasks on large sets of data. Designed at Google to provide an
 abstraction for interacting with raw data at scale, MapReduce is based on
 a master/slave model, where the workers are assigned tasks as they become idle.
@@ -33,12 +33,12 @@ That is, it takes a key-value pair and produces a list of
 intermediate key-value pairs. \emph{Reduce} has type
 $(k_1 \times list \: v_1) \rightarrow list \: v_2$.\footnote{
 These tasks are inspired by the \emph{map} and \emph{fold}
-higher-order functions from functional programming.}
+higher-order functions from functional programming, but are not identical.}
 Reduce tasks are responsible for distilling a set of values associated with
 a key to a smaller set, often containing just one value.
 
 Despite its popularity, the MapReduce architecture has some significant
-limitations\citep{lee-survey}. For one, Reduce tasks can only be assigned after
+limitations \citep{lee-survey}. For one, Reduce tasks can only be assigned after
 all Map tasks have been completed, meaning that nodes will idle even when there
 is work remaining. Another major performance limitation, which will be central
 to the motivation behind this project, is the architecture's reliance on a
@@ -47,14 +47,14 @@ because every Map or Reduce task needs to read its input from storage and write
 its output back.
 
 \subsection*{Apache Spark}
-Apache Spark\citep{zaharia} is designed to remove this bottleneck in order to
+Apache Spark \citep{zaharia} is designed to remove this bottleneck in order to
 increase the performance of iterative computations. Spark was introduced by
 AMPLab at University of California Berkeley. Its storage model Spark is
 based around \emph{Resilient Distributed Datasets}, or
-RDDs.\citep{zaharia_rdd}
+RDDs. \citep{zaharia_rdd}
 
 An RDD is processed in parallel by being split into \emph{partitions}, which
-are split between nodes. The dataset is accessed through a handle, which
+are shared between nodes. The dataset is accessed through a handle, which
 represents the RDD as a \emph{lineage} of transformations on persistent data.
 This allows RDDs to be recovered in the event of node failure, without writing
 all intermediate data to distributed storage. Spark is written in Scala,
