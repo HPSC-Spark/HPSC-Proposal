@@ -109,14 +109,14 @@ In Google's first paper introduction MapReduce, they provided a number of
 example tasks in which MapReduce can be applied. A few of those listed were
 word count, distributed grep, counting URL access frequency, \& reverse web-link
 graph \citep{dean-mapreduce}. These examples have often been implemented for
-benchmarking other MapReduce technologies and gives us a initial point in which
+benchmarking other MapReduce technologies and gives us an initial point in which
 to start our evaluation of Spark on Janus.
 
 %% Assuming Hadoop reference above
 Hadoop, being one of the more popular MapReduce frameworks, has been in a
 number of different studies. For this reason (and its large contrast in how
 it utilizes memory and disk storage), Hadoop will make for an interesting
-comparison with Spark.
+comparison with Spark. In the last few years, lots of scientists conducted research on workload analysis\citep{yanpei} in order to understand what kind of workloads were running on industry systems and how hadoop did not fit for certain workloads. So those drawbacks of hadoop are what we will be focusing on when profiling Spark.
 
 % existing spark evaluation
 Most of the benchmark programs run on Spark system were iterative and
