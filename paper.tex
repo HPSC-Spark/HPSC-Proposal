@@ -183,7 +183,48 @@ best.
 %       - make very Janus specific
 
 \subsection*{Setup/Profiling}
+
+install spark/scala
+- create group, access to all group members
+- setup script to start master
+install benchmark tools configure
+initial benchmarking mark on in-master-memory data
+initial benchmarking mark on from scratch
+fit all in memory of single core
+- monitor cache performance
+exceeding memory of single core
+- monitor cache performance
+load balancing data skew
+install controlled data partitioning extension
+- benchmark before and after
+
+data:
+stack overflow data public
+- distributed grep
+- itertive application linear regresssion
+
+- iterative program: clustering
+- iterative program: classification
+
+that can segway into longer project if we have time
+
+shark setup if time permits
+
+
+how do you benchmark MPI programs?
+can we use the same for spark?
+
+
+
+
 % do same grep test as google & Hadoop
+
+%get spark running on janus
+%monitoring - ganglia
+%make it easy for using
+%administrative side, getting it to run
+
+%might look into shark if need be
 
 % profile performance of spark on Janus 
 % existing technologies for MR
@@ -200,37 +241,12 @@ best.
 % create models that can be used both others in the future
 %   - guide for what hardware requirements are needed for given problems
 
-\subsection*{Implementing Project X}
-
-% time-permitting, employ spark on a project
-% brief intro to topic/problem (1-2 Ref Paper) 
-% how does it lend itself to MapReduce (Spark) approach
-% overview of design/implementation
-% profile program and improve performance 
-% using insight gained from phase one profiling
-% model for future MR applications on Janus
-
-%%% current ideas (input still needed):
-%%% - Ray-tracing
-%%% - NLP of Twitter (or similar) Data
-%%% - Neural Networks
-
-\section*{Process/Schedule}
-% Monte is our sponsor/advisor
-% expected time-line/milestone dates
-%   - install, play, understand
-%   - device test problems, collect data
-%   - find-setup / develop metrics
-%   - run test and varying problems sets
-%   - analyze results
-% reiterate "project implementation" will be approach if time allows
-%   - general milestones
-
 \section*{Conclusion}
 
 % sum up MR's importance
 % setup on Janus, test, evaluate
 % path for research to be conducted in future
+% check if problems of Hadoop also exist in Spark (Data skew)
 % restate project goals
 % specific conditions of Janus
 % add info to relatively new field
