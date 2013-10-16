@@ -17,9 +17,6 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}
-\end{abstract}
-
 \section*{Introduction}
 MapReduce \citep{dean-mapreduce} is a programming paradigm for performing highly
 parallel tasks on large sets of data. Designed at Google to provide an
@@ -51,7 +48,7 @@ Apache Spark \citep{zaharia} is designed to remove this bottleneck in order to
 increase the performance of iterative computations. Spark was introduced by
 AMPLab at University of California Berkeley. Its storage model is
 based around \emph{Resilient Distributed Datasets}, or
-RDDs. \citep{zaharia_rdd}
+RDDs \citep{zaharia_rdd}.
 
 An RDD is processed in parallel by being split into \emph{partitions}, which
 are shared between nodes. The dataset is accessed through a handle, which
@@ -73,21 +70,21 @@ using the Scala collections API.
 %   - has not yet employed MR technologies
 %   - problem with Hadoop and disk-less
 
-\subsection*{Janus Super Computer}
-Janus Super computer mainly consists of 1,368 computing nodes, with  12 cores
+\subsection*{Janus Supercomputer}
+The Janus supercomputer mainly consists of 1,368 computing nodes, with  12 cores
 each that adds upto a total of 16,416 cores. Each node consists of two hex core
 2.8Mhz Intel westmere processor. Each core contain 2GB of Ram with a total of
-24GB of RAM per node. It  contains 32TB high performance storage with lustre
-filesystem. 
+24GB of RAM per node. It contains 32TB high performance storage with lustre
+filesystem \citep{tufo}. 
 
 Since Janus is diskless, it is not possible to install Hadoop on Janus.
 However, Spark is an in-memory based cluster computing system which does not
 rely on disk data for every iteration and hence it could be easily deployed on
-Janus super computer and evaluated.
+Janus supercomputer and evaluated.
 
 
 % what is spark, differs from hadoop 
-% Spark\citep{zaharia_rdd}, known for its peformance in iterative and
+% Spark\citep{zaharia_rdd}, known for its performance in iterative and
 % interactive tasks, was introduced by AmpLab group in University of California
 % Berkeley. One of the best features that Spark supports is fault-tolerance.
 % With hundreds or even thousands of machines in one cluster, the failure rate
@@ -135,7 +132,7 @@ on-disk technologies.
 Andrew Pavlo et al. \cite{andrew} compared SQL performance between
 MapReduce and DBMS system and Amplab \citep{amplab_bench}, inspired by the
 benchmark in the previous paper and then conducted benchmarks on Shark,
-Hive\citep{ashish}, Impala and Redshift.
+Hive \citep{ashish}, Impala and Redshift.
 % performance of mapreduce: an in-depth study
 % written in Java
 % Hadoop\citep{jiang}
@@ -171,88 +168,68 @@ As we will be running Spark with Shark, we will also briefly touch on the
 reported performance of Shark. When compared to Hive (Hadoop's respective
 SQL interface) we see that the run-times for the first iteration are comparable,
 (when data need to be loaded into memory). But Shark is shown to be 10 orders
-of magnitude faster during subsequent iterations of an algorithms\citep{engle}.
+of magnitude faster during subsequent iterations of an algorithms \citep{engle}.
 Even if this is not a pure comparison of the Hadoop and Spark technologies, we
 can still glean some additional insights as to where each technology performs
 best.
 
 
 \section*{Project Proposal}
-The main novelity of our project will be working with Spark on the Janus
-Supercomputer. Given the benefits of MapReduce, adding this additional
-functionality to Janus will be helpful for those using Janus to conduct
-research. Our project will consist of the steps outlined in the
-following sections.
+The main novelty of our project will be working with Spark on the Janus
+supercomputer. Given the strength and popularity of MapReduce, adding this
+additional functionality to Janus will be extremely beneficial for those using
+Janus to conduct deep analysis on large datasets. Our project will consist of
+the steps outlined in the following sections.
 
 \subsection*{Installation}
-install spark/scala
-- create group, access to all group members
-- setup script to start master
-install benchmark tools configure
-    monitoring - Ganglia, PerfSuite, YourKit
-    May need to write out own specifically for Spark
+The first phase of our project will be getting Spark installed and functioning
+properly on Janus In addition to installing the core Spark framework, we will
+also need to setup profiling tools. At this time, we are looking at employing
+PerfSuite \citep{perfsuite}, Ganglia \citep{ganglia}, and YourKit
+\citep{yourkit} to run our evaluations. However if the need arises we may
+need to write some additional profiling scripts, if we cannot capture a metric
+we desire, given the unique nature of the Spark framework.
 
 \subsection*{Benchmarking}
-initial benchmarking mark on in-master-memory data
-initial benchmarking mark on from scratch
-fit all in memory of single core
-- monitor cache performance
-exceeding memory of single core
-- monitor cache performance
-load balancing data skew
-install controlled data partitioning extension
-- benchmark before and after
+Once Spark is properly setup on Janus, we will begin the project's second phase
+of evaluating Spark's performance over a series of different tasks. First, we
+will begin by implementing a distributed grep program, as described in
+\citep{dean-mapreduce}. This will be a traditional single-iteration MapReduce
+program. Next we will perform an iterative logistic regression program, which
+we expect will showcase Sparks strength in iterative MapReduce problems.
 
-data:
-stack overflow data public
-- distributed grep
-    same as in google MR paper
-- itertive application linear regresssion
-    same as in Spark paper
+As Spark implements an in-memory MapReduce solution, we additionally would like
+to see what kind of performance hit Spark will take on Janus when the problem
+size distributed to each worker is too large to completely fit in memory.
 
-\subsection*{Possible Expansion}
-- iterative program: clustering
-- iterative program: classification
+Finally, we are interested in seeing how well Spark handles load imbalance or
+\emph{data skew}. There is an extension to Spark that controls data
+partitioning of RDDs, which may address any concerns with data skew. We will
+also be profiling Spark both with and without this extension.
 
-that can segway into longer project if we have time
-final setup of Spark for other users
+Our dataset for most of our MapReduce tasks will be the Stack Overflow Data
+Dump. This consist of all the data from the website's posts, comments,
+votes, and other forum communication. There are in total 29 monthly data dumps,
+where each month's dump averages 8GB. This will provide more than enough data
+required for our analysis.
 
-shark setup if time permits
-
-
-% do same grep test as google & Hadoop
-
-%get spark running on janus
-%monitoring - ganglia
-%make it easy for using
-%administrative side, getting it to run
-
-%might look into shark if need be
-
-% profile performance of spark on Janus 
-% existing technologies for MR
-% possibility of adapting these benchmarks to run on Janus
-% find/address weak points/Janus-specific problems 
-% possible areas to focus on during evaluation:
-%   - too big for memory (benchmarking on this specific problem) 
-%   - data shuffling work \citep{jiaxing}
-%   - network congestion 
-%   - iterative, interactive analysis
-%   - load balancing
-%   - fault tolerance
-%	- data skew \citep{qifa} \citep{ganesh}
-% create models that can be used both others in the future
-%   - guide for what hardware requirements are needed for given problems
+\subsection*{Project Expansion}
+Our main focus will to successfully install Spark on Janus, and evaluate it's
+performance on such an architecture. However, if time permits, we plan on
+expanding our project by developing a clustering or classification program in
+Spark, using the above mentioned dataset. Working on an application of a
+non-trivial size will provide us with more information about how the Spark
+setup could be improved on Janus.
 
 \section*{Conclusion}
-
-% sum up MR's importance
-% setup on Janus, test, evaluate
-% path for research to be conducted in future
-% check if problems of Hadoop also exist in Spark (Data skew)
-% restate project goals
-% specific conditions of Janus
-% add info to relatively new field
+MapReduce has proved itself to be a important tool in performing deep analysis
+on large datasets. It is our aim to bring this technology to the Janus
+supercomputer by way of Apache Spark. After setting up Spark and its
+extensions, we will profile the performance of its provided features to
+determine if there are any issues specific to running on the Janus
+architecture. The resulting benchmarks and analysis will hopefully serve as a
+guide to those wanting to conduct research using MapReduce and is related
+algorithms on Janus.
 
 \bibliography{paper}
 \bibliographystyle{plain}
