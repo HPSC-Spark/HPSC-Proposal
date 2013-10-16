@@ -19,7 +19,7 @@
 
 \section*{Introduction}
 MapReduce \citep{dean-mapreduce} is a programming paradigm for performing highly
-parallel tasks on large sets of data. Designed at Google to provide an
+parallel computations on large sets of data. Designed at Google to provide an
 abstraction for interacting with raw data at scale, MapReduce is based on
 a master/slave model, where the workers are assigned tasks as they become idle.
 
@@ -58,69 +58,36 @@ all intermediate data to distributed storage. Spark is written in Scala,
 a statically-typed functional JVM language, and allows interaction with datasets
 using the Scala collections API.
 
-% what is map-reduce, history, applications (1 Ref Paper) 
-%   - origin, date, creators, original purpose
-%   - growing popularity, expanding applications
-%   - common technologies/tools, Hadoop
-% Janus description, why Janus can't use Hadoop (1 Ref Paper) 
-%       \citep{tufo}
-%   - what, where is it
-%   - architecture, hardware: number of nodes, procs, storage
-%   - focus on disk-less, common for HPC?
-%   - has not yet employed MR technologies
-%   - problem with Hadoop and disk-less
-
 \subsection*{Janus Supercomputer}
 The Janus supercomputer mainly consists of 1,368 computing nodes, with  12 cores
-each that adds upto a total of 16,416 cores. Each node consists of two hex core
-2.8Mhz Intel westmere processor. Each core contain 2GB of Ram with a total of
-24GB of RAM per node. It contains 32TB high performance storage with lustre
-filesystem \citep{tufo}. 
+each that for a total of 16,416 cores. Each node consists of two hex core
+2.8Mhz Intel Westmere processors. Each core contains 2GB of RAM for a total of
+24GB of RAM per node. Each node has access to a 32TB Lustre filesystem, which
+enables parallel IO.\citep{tufo}. 
 
 Since Janus is diskless, it is not possible to install Hadoop on Janus.
 However, Spark is an in-memory based cluster computing system which does not
 rely on disk data for every iteration and hence it could be easily deployed on
 Janus supercomputer and evaluated.
 
-
-% what is spark, differs from hadoop 
-% Spark\citep{zaharia_rdd}, known for its performance in iterative and
-% interactive tasks, was introduced by AmpLab group in University of California
-% Berkeley. One of the best features that Spark supports is fault-tolerance.
-% With hundreds or even thousands of machines in one cluster, the failure rate
-% for one computer is not negligible. Spark is able to recover from failed
-% machines by rebuilding the lost data from the lineage information of the RDD.
-% On the other hand, Spark is so expressible that it not only supports mapreduce
-% model and also Pregel, DryadLINQ, which means the program you run on mapreduce
-% can be modified to work on Spark.
-% Spark\citep{zaharia} \citep{zaharia_rdd}
-%   - relationship with Scala (statically typed HL programming language for JVM)
-%   - spark another MR solution, but all in-memory, year created
-%   - solves the disk-less problem, can run on Janus
-%   - other contrasts with Hadoop, preferred domains
-%         - iterative, interactive, beyond MapReduce
-
-%   - what is shark (do we want to use Shark in our project?)
-%       - shark comes with its own set of benchmark queries
-
-% Provides easy SQL programming interface to Spark's deep analysis tools.
-% Shark\citep{engle}
-
 \section*{Existing Performance Evaluations }
 Despite being a relatively new technology, a considerable amount of performance
-evaluations has been performed on the wide array of MapReduce solutions.
-In Google's first paper introduction MapReduce, they provided a number of
-example tasks in which MapReduce can be applied. A few of those listed were
-word count, distributed grep, counting URL access frequency, \& reverse web-link
+evaluations have been performed on implementations of MapReduce.
+In Google's first paper introducing MapReduce, they provided a number of
+example tasks in which this computing model can be applied. A few of those listed were
+word count, distributed grep, counting URL access frequency, and reverse web-link
 graph \citep{dean-mapreduce}. These examples have often been implemented for
-benchmarking other MapReduce technologies and gives us an initial point in which
+benchmarking other MapReduce technologies and give us an initial point from which
 to start our evaluation of Spark on Janus.
 
 %% Assuming Hadoop reference above
-Hadoop, being one of the more popular MapReduce frameworks, has been in a
-number of different studies. For this reason (and its large contrast in how
-it utilizes memory and disk storage), Hadoop will make for an interesting
-comparison with Spark. In the last few years, lots of scientists conducted research on workload analysis\citep{yanpei} in order to understand what kind of workloads were running on industry systems and how hadoop did not fit for certain workloads. So those drawbacks of hadoop are what we will be focusing on when profiling Spark.
+Apache Hadoop, an open-source MapReduce implementation, has been evaluated in a
+number of different studies. For this reason (and for providing a point of
+contrast for its storage model), Hadoop will make for an interesting comparison
+with Spark. The last few years have seen research efforts to analyze the 
+kinds of workflows which are well-suited to Hadoop, and which are not.
+\citep{yanpei} workloads. It will be interesting to explore which of
+this latter category of problems are well-adapted to Spark.
 
 % existing spark evaluation
 Most of the benchmark programs run on Spark system were iterative and
