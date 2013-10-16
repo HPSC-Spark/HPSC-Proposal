@@ -177,24 +177,22 @@ can still glean some additional insights as to where each technology performs
 best.
 
 
-% introduction to shark
-%   SQL interface for spark
-%   abstracts coding mapreduce functions
-%   - shark study results
-% Shark\citep{engle}
+\section*{Project Proposal}
+The main novelity of our project will be working with Spark on the Janus
+Supercomputer. Given the benefits of MapReduce, adding this additional
+functionality to Janus will be helpful for those using Janus to conduct
+research. Our project will consist of the steps outlined in the
+following sections.
 
-\section*{Proposal}
-% room for further research
-%   - what are questions we can still try to answer
-%   - how does Janus make this a special case
-%       - make very Janus specific
-
-\subsection*{Setup/Profiling}
-
+\subsection*{Installation}
 install spark/scala
 - create group, access to all group members
 - setup script to start master
 install benchmark tools configure
+    monitoring - Ganglia, PerfSuite, YourKit
+    May need to write out own specifically for Spark
+
+\subsection*{Benchmarking}
 initial benchmarking mark on in-master-memory data
 initial benchmarking mark on from scratch
 fit all in memory of single core
@@ -208,20 +206,18 @@ install controlled data partitioning extension
 data:
 stack overflow data public
 - distributed grep
+    same as in google MR paper
 - itertive application linear regresssion
+    same as in Spark paper
 
+\subsection*{Possible Expansion}
 - iterative program: clustering
 - iterative program: classification
 
 that can segway into longer project if we have time
+final setup of Spark for other users
 
 shark setup if time permits
-
-
-how do you benchmark MPI programs?
-can we use the same for spark?
-
-
 
 
 % do same grep test as google & Hadoop
